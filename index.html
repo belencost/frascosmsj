@@ -3,44 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Para Vos ❤️</title>
-
-  <!-- Vinculo al archivo de estilos externo -->
+  <title>Regalo de Estrellas ✨</title>
   <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-
   <!-- Botón para cambiar entre modo claro y oscuro -->
   <button id="toggle-modo">🌗 Cambiar modo</button>
 
-  <!-- Escena principal: cambia según el modo -->
+  <!-- Fondo retro con sol (modo claro) o cielo estrellado (modo oscuro) -->
   <div class="escena">
-    <!-- El sol (modo claro) o fondo estrellado (modo oscuro) -->
-    <div class="sol" id="astro"></div>
+    <div id="astro"></div> <!-- Sol o luna -->
+    <canvas id="fondoEstrellas"></canvas> <!-- Estrellas en modo oscuro -->
   </div>
 
-  <!-- Frascos de mensajes -->
-  <div style="text-align:center">
-    <div class="frasco" id="frascoLleno">
-      <h4>Frasco Lleno</h4>
-    </div>
+  <!-- Zona de frascos -->
+  <main class="contenedor-frascos">
+    <section class="frasco" id="frascoLleno">
+      <h3>✨ Frasco de Estrellas ✨</h3>
+      <div class="contenido-frasco" id="contenidoLleno"></div>
+      <span id="contadorLleno">0 estrellas</span>
+    </section>
 
-    <div class="frasco" id="frascoVacio">
-      <h4>Frasco de Recuerdos</h4>
-    </div>
-  </div>
+    <section class="frasco" id="frascoVacio">
+      <h3>💌 Frasco de Recuerdos</h3>
+      <div class="contenido-frasco" id="contenidoVacio"></div>
+      <span id="contadorVacio">0 recuerdos</span>
+    </section>
+  </main>
 
-  <!-- Álbum donde se guardan los recuerdos leídos -->
-  <div class="album" id="album">
-    <h3>Álbum de Recuerdos</h3>
-  </div>
+  <!-- Álbum de recuerdos ya abiertos -->
+  <section class="album" id="album">
+    <h3>📘 Álbum de Recuerdos</h3>
+  </section>
 
-  <!-- Modal (ventana emergente al hacer clic en un mensaje) -->
+  <!-- Modal emergente para mostrar mensajes completos -->
   <div class="modal" id="modal">
     <div class="modal-content" id="modalContent"></div>
   </div>
 
-  <!-- Script de comportamiento externo -->
   <script src="script.js"></script>
 </body>
 </html>
