@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Vos ❤️</title>
+
+  <!-- Vinculo al archivo de estilos externo -->
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+  <!-- Botón para cambiar entre modo claro y oscuro -->
+  <button id="toggle-modo">🌗 Cambiar modo</button>
+
+  <!-- Escena principal: cambia según el modo -->
+  <div class="escena">
+    <!-- El sol (modo claro) o fondo estrellado (modo oscuro) -->
+    <div class="sol" id="astro"></div>
+  </div>
+
+  <!-- Frascos de mensajes -->
+  <div style="text-align:center">
+    <div class="frasco" id="frascoLleno">
+      <h4>Frasco Lleno</h4>
+    </div>
+
+    <div class="frasco" id="frascoVacio">
+      <h4>Frasco de Recuerdos</h4>
+    </div>
+  </div>
+
+  <!-- Álbum donde se guardan los recuerdos leídos -->
+  <div class="album" id="album">
+    <h3>Álbum de Recuerdos</h3>
+  </div>
+
+  <!-- Modal (ventana emergente al hacer clic en un mensaje) -->
+  <div class="modal" id="modal">
+    <div class="modal-content" id="modalContent"></div>
+  </div>
+
+  <!-- Script de comportamiento externo -->
+  <script src="script.js"></script>
+</body>
+</html>
