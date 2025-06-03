@@ -35,18 +35,20 @@ function generarEstrellas(cantidad = 100) {
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       r: Math.random() * 1.5 + 0.5,
-      o: Math.random()
+      o: Math.random(),
+      dx: (Math.random() - 0.5) * 0.5,
+      dy: (Math.random() - 0.5) * 0.5
     });
   }
 }
 
 function dibujarEstrellas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = 'white';
   estrellas.forEach(e => {
     ctx.globalAlpha = e.o;
     ctx.beginPath();
     ctx.arc(e.x, e.y, e.r, 0, Math.PI * 2);
+    ctx.fillStyle = 'white';
     ctx.fill();
   });
   ctx.globalAlpha = 1;
@@ -55,8 +57,14 @@ function dibujarEstrellas() {
 // === ANIMACIÓN DE ESTRELLAS ===
 function animar() {
   estrellas.forEach(e => {
+    e.x += e.dx;
+    e.y += e.dy;
     e.o += (Math.random() - 0.5) * 0.05;
     e.o = Math.max(0.2, Math.min(e.o, 1));
+
+    // Rebote en bordes
+    if (e.x <= 0 || e.x >= canvas.width) e.dx *= -1;
+    if (e.y <= 0 || e.y >= canvas.height) e.dy *= -1;
   });
   dibujarEstrellas();
   requestAnimationFrame(animar);
@@ -81,6 +89,7 @@ function actualizarFrascoLleno(mensajes) {
     estrella.title = 'Click para abrir';
     estrella.innerText = '★';
     estrella.dataset.index = index;
+    estrella.style.transition = 'transform 0.3s';
     estrella.addEventListener('click', () => mostrarMensaje(msg, estrella));
     frascoLleno.appendChild(estrella);
   });
@@ -98,15 +107,22 @@ function mostrarMensaje(msg, estrella) {
   contadorVacio.innerText = `${frascoVacio.children.length} recuerdos`;
   contadorLleno.innerText = `${frascoLleno.children.length} estrellas`;
 
-  // También agregar al álbum
+  // Agregar al álbum
   const recordatorio = document.createElement('div');
   recordatorio.className = 'mensaje';
   recordatorio.innerText = msg;
   album.appendChild(recordatorio);
 
-  // Sonido opcional
-  const audio = new Audio('estrella.mp3');
-  audio.play().catch(() => {});
+  // Animar frasco
+  const frasco = document.querySelector('.frasco');
+  frasco.style.transform = 'rotate(2deg)';
+  setTimeout(() => frasco.style.transform = 'rotate(0deg)', 150);
+
+  // Sonido
+  const sonidoCristal = new Audio('assets/cristal.mp3');
+  sonidoCristal.play().catch(() => {});
+  const sonidoEstrella = new Audio('assets/estrella.mp3');
+  sonidoEstrella.play().catch(() => {});
 }
 
 modal.addEventListener('click', () => {

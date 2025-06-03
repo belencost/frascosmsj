@@ -1,3 +1,4 @@
+
 /* === VARIABLES GENERALES === */
 :root {
   --color-sol: #FFD700;
@@ -33,19 +34,32 @@ body.modo-oscuro {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 10px;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.8);
+  color: #000;
   cursor: pointer;
   font-weight: bold;
+}
+
+body.modo-oscuro #toggle-modo {
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
 }
 
 /* === ESCENA === */
 .escena {
   position: relative;
-  height: 40vh;
+  height: 50vh;
   width: 100%;
   overflow: hidden;
+  background-image: url('assets/puente-dia-pixel.png');
   background-repeat: no-repeat;
+  background-position: bottom center;
   background-size: cover;
+  transition: background-image 0.5s ease;
+}
+
+body.modo-oscuro .escena {
+  background-image: url('assets/puente-noche-pixel.png');
 }
 
 #astro {
@@ -96,6 +110,10 @@ body.modo-oscuro {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-image: url('assets/frasco.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .contenido-frasco {
